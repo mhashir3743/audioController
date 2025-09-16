@@ -1,6 +1,5 @@
 name: Build AudioController APK
 
-# Trigger workflow on pushes to main branch and manual trigger
 on:
   push:
     branches:
@@ -12,28 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout the code
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. Set up Java 17
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         distribution: temurin
         java-version: 17
 
-    # 3. Set up Gradle
     - name: Set up Gradle
       uses: gradle/gradle-build-action@v2
 
-    # 4. Build release APK
     - name: Build APK
-      run: ./gradlew assembleRelease
-
-    # 5. Upload APK as artifact
-    - name: Upload APK
-      uses: actions/upload-artifact@v3
-      with:
-        name: AudioController-release.apk
-        path: app/build/outputs/apk/release/app-release.apk
+      run: ./gradl
